@@ -80,7 +80,30 @@ public class Vector2 extends Application {
          
         StackPane root = new StackPane();
         Scene scene = new Scene(tp, 500, 500);
-        
+        scene.setOnKeyPressed(evento->{
+           String ev=evento.getCode().toString();
+            if(ev.equalsIgnoreCase("left")){
+                if(posREd!=0){
+                   r[posREd].setFill(Color.WHITE);
+                   r[posREd-1].setFill(Color.RED);
+                   posREd--;
+               }else{
+                 r[posREd].setFill(Color.WHITE); 
+                  r[r.length-1].setFill(Color.RED);
+                  posREd=r.length-1;  
+               }
+            }else{
+                if(posREd<r.length-1){
+                   r[posREd].setFill(Color.WHITE);
+                   r[posREd+1].setFill(Color.RED);
+                   posREd++;
+               }else{
+                  r[posREd].setFill(Color.WHITE); 
+                  r[0].setFill(Color.RED);
+                  posREd=0;
+               }
+            }  
+        });
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
